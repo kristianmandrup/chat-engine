@@ -1,23 +1,32 @@
 defaults: &defaults
-  host: localhost
-  # slaves:
-  #   - host: slave1.local
-  #     port: 27018
-  #   - host: slave2.local
-  #     port: 27019
+  # for mongoid 3+
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
 
 development:
   <<: *defaults
-  database: dummy_development
+  sessions:
+    default:
+      database: dummy_development
+      hosts:
+        - localhost:27017
 
 test:
   <<: *defaults
-  database: dummy_test
+  sessions:
+    default:
+      database: dummy_test
+      hosts:
+        - localhost:27017
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['MONGOID_HOST'] %>
-  port: <%= ENV['MONGOID_PORT'] %>
-  username: <%= ENV['MONGOID_USERNAME'] %>
-  password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: <%= ENV['MONGOID_DATABASE'] %>
+  sessions:
+    default:
+      hosts: 
+        - "#{ENV['MONGOID_HOST']}:#{ENV['MONGOID_PORT']}"
+      username: <%= ENV['MONGOID_USERNAME'] %>
+      password: <%= ENV['MONGOID_PASSWORD'] %>
+      database: <%= ENV['MONGOID_DATABASE'] %>

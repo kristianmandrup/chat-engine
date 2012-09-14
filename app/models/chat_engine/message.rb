@@ -1,4 +1,4 @@
-require 'mongoid/markdown'
+# require 'mongoid_markdown'
 
 module ChatEngine
   class Message

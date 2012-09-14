@@ -6,7 +6,15 @@ ChatEngine is a Rails 3 Engine created to give web applications an easy to use c
 
 The aim of this project is to make adding a chat engine to a Rails application quick and easy.
 
-= Installation
+## Tech
+
+The ChatEngine uses Mongoid for the `Message` domain model. Messages sent can include Markdown markup tags which are converted to HTML. The engine has been tested to work with Mongoid 3 and Rails 3.2+. 
+
+## Usage example config
+
+See the spec/dummy app for an example usage configuration (but without the pusher config). If you set the pusher config in the dummy app, you should be able to run the integration spec.
+
+## Installation
 
 In hosting app Gemfile
 
